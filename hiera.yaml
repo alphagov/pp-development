@@ -1,0 +1,9 @@
+:hierarchy:
+    - "role-%{::machine_role}"
+    - secrets
+    - environment
+    - common
+:backends:
+    - yaml
+:yaml:
+    :datadir: ../pp-puppet/hieradata
