@@ -8,6 +8,7 @@ backdrop-pingdom-collector
 backdrop-send
 datainsight-everything-recorder
 datainsight-format-success-recorder
+datainsight-frontend
 datainsight-ga-collector
 datainsight-ga-functional-test
 datainsight-govuk-collector
