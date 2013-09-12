@@ -92,3 +92,10 @@ while read repo; do
   fetch_repo "$repo" "$GITHUB_ENT"
 done < "GHE_REPOS"
 
+if [ -n "$GOVUK_DEPS" ]; then
+    status "Reading list of GOV.UK repositories from GOV_REPOS and fetching from GitHub"
+    while read repo; do
+        fetch_repo "$repo" "$GITHUB_PUBLIC"
+    done < "GOV_REPOS"
+fi
+
