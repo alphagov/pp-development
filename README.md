@@ -1,9 +1,11 @@
-pp-development
-==============
+# pp-development
 
-Performance Platform Development Environment
+Performance Platform development environment
 
-basic setup
-===========
+## Basic setup
 
 `GOVUK_DEPS=true ./install.sh`
+
+## Running apps
+
+`bowl performance`
