@@ -1,3 +1,6 @@
+process :screenshot_as_a_service
 process :spotlight
 
-process :performance => [:spotlight]
+process :data_out => [:screenshot_as_a_service, :spotlight]
+
+process :performance => [:data_out]
