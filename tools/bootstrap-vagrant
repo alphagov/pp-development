@@ -51,19 +51,22 @@ bundle_gems() {
   cd /var/apps/pp-puppet
   bundle --path vendor/bundle \
          --without NONEXISTENT \
+         --deployment \
+         --standalone \
+         --binstubs \
          --quiet 2>&1 | pp
 }
 
 install_modules() {
   echo "--> Update 3rd-party modules" | pp
   cd /var/apps/pp-puppet
-  bundle exec librarian-puppet install >&2
+  ./bin/librarian-puppet install >&2
 }
 
 do_puppet_run() {
   echo "--> Run Puppet" | pp
   cd /var/apps/pp-puppet
-  FACTER_machine_role=development bundle exec puppet apply --modulepath=modules:vendor/modules \
+  FACTER_machine_role=development ./bin/puppet apply --modulepath=modules:vendor/modules \
                      --hiera_config=hiera.yaml \
                      manifests/site.pp 2>&1 | pp
 }
