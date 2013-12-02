@@ -67,7 +67,7 @@ do_puppet_run() {
   echo "--> Run Puppet" | pp
   cd /var/apps/pp-puppet
   FACTER_machine_role=development ./bin/puppet apply --modulepath=modules:vendor/modules \
-                     --hiera_config=hiera.yaml \
+                     --hiera_config=../pp-development/hiera.yaml \
                      manifests/site.pp 2>&1 | pp
 }
 

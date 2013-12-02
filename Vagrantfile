@@ -3,7 +3,7 @@
 
 # Node definitions
 hosts = [
-  { name: 'pp-development-1',  ip: '172.27.1.11' },
+  { name: 'pp-development-1',  ip: '10.0.0.100' },
 ]
 
 def get_box(provider)
