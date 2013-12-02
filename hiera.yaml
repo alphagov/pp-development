@@ -1,7 +1,8 @@
 :hierarchy:
+    - environment-development
+    - environment
     - "role-%{::machine_role}"
     - secrets
-    - environment
     - common
 :backends:
     - yaml
