@@ -8,7 +8,6 @@ backdrop-pingdom-collector
 backdrop-send
 datainsight-everything-recorder
 datainsight-format-success-recorder
-datainsight-frontend
 datainsight-ga-collector
 datainsight-ga-functional-test
 datainsight-govuk-collector
@@ -22,8 +21,9 @@ datainsight-weekly-reach-recorder
 datainsight_collector
 datainsight_logging
 datainsight_recorder
-limelight
 pp-puppet
 puppet-backdrop
 puppet-limelight
+screenshot-as-a-service
+spotlight
 stageprompt
