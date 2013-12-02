@@ -60,7 +60,7 @@ bundle_gems() {
 install_modules() {
   echo "--> Update 3rd-party modules" | pp
   cd /var/apps/pp-puppet
-  ./bin/librarian-puppet install >&2
+  bundle exec ./bin/librarian-puppet install >&2
 }
 
 do_puppet_run() {
