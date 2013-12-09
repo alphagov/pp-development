@@ -71,9 +71,6 @@ if [ "$(id -u)" -eq "0" ]; then
   abort "This script is not intended to be run as root. Rerun without su/sudo."
 fi
 
-if [ "$(uname -s)" != "Darwin" ]; then
-  abort "This script will only work on a Mac at the moment, sorry!"
-fi
 
 status "Checking prerequisite software"
 check_installed git
