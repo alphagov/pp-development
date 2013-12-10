@@ -30,7 +30,7 @@ Performance Platform development environment
 - Add a hostname entry to your local machine's ``/etc/hosts`` file which maps
   that IP to a domain name understood by the apps, eg:
   ``10.0.0.100    admin.perfplat.dev``
-- Now you can access ie ``http://admin.perfplat.dev/data/...``
+- Now you can access ie ``http://admin.perfplat.dev``
 - Note that the hostname you choose in the ``/etc/hosts`` file affects the
   routing to the app: if you see "Bad Gateway" messages it's a clue that
   your hostname could be wrong.
