@@ -25,7 +25,8 @@ Performance Platform development environment
 - From inside the VM, you can access apps directly at ie localhost:3038
 - From outside the VM, requests to port 80 are routed to the correct app based
   on domain name, HTTP method and URL.
-- Find the IP of your VM by running ``ifconfig`` inside the VM.
+- Note the IP of your VM as defined in ``Vagrantfile``. It's worth confirming
+  by running ``ifconfig`` inside the VM.
 - Add a hostname entry to your local machine's ``/etc/hosts`` file which maps
   that IP to a domain name understood by the apps, eg:
   ``10.0.0.100    admin.perfplat.dev``
