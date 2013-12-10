@@ -15,7 +15,9 @@ Performance Platform development environment
 
 - SSH on to the machine with `vagrant ssh`
 - Change to the development directory with `cd /var/apps/pp-development`
-- Start the apps with `bowl performance`
+- Start the apps individually with ie `bowl backdrop_read` or all together with
+  `bowl performance`
+- See the file ``Pinfile`` which is used by bowl.
 
 ## Routing from your local machine to your VM
 
