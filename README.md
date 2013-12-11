@@ -4,7 +4,8 @@ Performance Platform development environment
 
 ## Basic setup
 
-- Check / install dependencies with `GOVUK_DEPS=true ./install.sh`
+- Check / install dependencies with `GOVUK_DEPS=true ./install.sh` Warnings
+  about the ``pp-deployment`` repository can be safely ignored.
 - Start the virtual machine with `vagrant up` (this will provision the machine)
 - SSH on to the machine with `vagrant ssh`
 - Install the "bowl" command by doing $ sudo gem install bowler
