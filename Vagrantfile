@@ -43,6 +43,7 @@ end
       c.ssh.forward_agent = true
       c.vm.provision :shell, :path => "tools/bootstrap-vagrant"
       c.vm.share_folder "apps", "/var/apps", ".."
+      c.vm.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/apps", "1"]
     end
   end
 end
