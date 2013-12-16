@@ -7,6 +7,7 @@ Performance Platform development environment
 - Check / install dependencies with `GOVUK_DEPS=true ./install.sh` Warnings
   about the ``pp-deployment`` repository can be safely ignored.
 - Start the virtual machine with `vagrant up` (this will provision the machine)
+-- VMWare users may [hit an error](http://superuser.com/questions/511679/getting-an-error-trying-to-set-up-shared-folders-on-an-ubuntu-instance-of-vmware)
 - SSH on to the machine with `vagrant ssh`
 - Install the "bowl" command by doing $ sudo gem install bowler
 - Install dependencies for each required app in /var/apps by following the
