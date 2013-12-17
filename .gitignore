@@ -39,4 +39,5 @@ nosetests.xml
 
 #
 Vagrantfile.local
+*Vagrantfile.localconfig
 .vagrant
