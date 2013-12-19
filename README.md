@@ -8,6 +8,9 @@ Performance Platform development environment
   about the ``pp-deployment`` repository can be safely ignored.
 - Start the virtual machine with `vagrant up` (this will provision the machine)
 -- VMWare users may [hit an error](http://superuser.com/questions/511679/getting-an-error-trying-to-set-up-shared-folders-on-an-ubuntu-instance-of-vmware)
+-- VirtualBox users should not ignore warnings about a mismatch between
+   the version of VirtualBox and the Guest Additions. One known symptom is the
+   inability to create symlinks inside Shared Folders, ie ``/var/apps``.
 - SSH on to the machine with `vagrant ssh`
 - Install the "bowl" command by doing $ sudo gem install bowler
 - Install dependencies for each required app in /var/apps by following the
