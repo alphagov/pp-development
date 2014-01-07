@@ -2,7 +2,6 @@ backdrop
 backdrop-asset-request-collector
 backdrop-collector
 backdrop-ga-collector
-backdrop-ga-collector-private
 backdrop-ga-realtime-collector
 backdrop-pingdom-collector
 backdrop-send
