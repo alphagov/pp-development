@@ -1,36 +1,38 @@
 # pp-development
 
-Performance Platform development environment
+A Performance Platform development environment that uses [alphagov/pp-puppet](https://github.com/alphagov/pp-puppet) to provision you a virtual machine.
+
+## Host machine prerequisites
+
+- [Vagrant](http://www.vagrantup.com/) (we've tested with versions >= 1.3.0)
+  - And the vagrant-dns plugin: `vagrant plugin install vagrant-dns`
+- Software to run the virtual machine
+  - We make heavy use of [VirtualBox](https://www.virtualbox.org/) and we know version 4.2.16 works
+  - [VMware](http://www.vmware.com/uk/) should also work
 
 ## Basic setup
 
-- Clone this folder onto your local machine with `git clone git@github.com:alphagov/pp-development.git`. You can do this in your `govuk` folder or in a separate `performance-platform` folder.
-- Check / install dependencies with `GOVUK_DEPS=true ./install.sh` Warnings
-  about the ``pp-deployment`` repository can be safely ignored.
-- If you don't have Vagrant installed, install it from [vagrantup.com](http://www.vagrantup.com/)
-  - You need to have vagrant version >= 1.3.0
-- You need `vagrant-dns`, it can be installed with `vagrant plugin install vagrant-dns`
+- Clone this folder onto your local machine with `git clone git@github.com:alphagov/pp-development.git`. You can do this in your `~/govuk` folder if you have one or in a separate `~/performance-platform` folder
+- Install dependencies with `GOVUK_DEPS=true ./install.sh`
+  - Warnings about the ``pp-deployment`` repository can be safely ignored (it contains deployment secrets that you may not have access to)
 - Start the virtual machine with `vagrant up`
   - VMWare users may [hit an error](http://superuser.com/questions/511679/getting-an-error-trying-to-set-up-shared-folders-on-an-ubuntu-instance-of-vmware)
   - VirtualBox users should not ignore warnings about a mismatch between
-   the version of VirtualBox and the Guest Additions. One known symptom is the
-   inability to create symlinks inside Shared Folders, ie ``/var/apps``.
-- `vagrant provision` will install some additional software
-- SSH on to the machine with `vagrant ssh`
-- Install the "bowl" command by doing $ sudo gem install bowler
-- Install dependencies for each required app in /var/apps by following the
-  instructions in their README files.
+    the version of VirtualBox and the Guest Additions. One known symptom is the
+    inability to create symlinks inside Shared Folders, ie ``/var/apps``
+- Starting the machine should also provision it using Puppet (resulting in lots of lines beginning `[bootstrap] Notice: /Stage[main]`), but if it doesn't you can safely reprovision at any time with `vagrant provision`
+- SSH on to the virtual machine with `vagrant ssh`
+- Install dependencies for each required app in `/var/apps` by following the
+  instructions in their README files
 
 ## Running apps
 
 - SSH on to the machine with `vagrant ssh`
 - Change to the development directory with `cd /var/apps/pp-development`
-- Start the apps individually with ie `bowl backdrop_read` or all together with
+- Start the apps individually with `bowl backdrop_read` or `bowl spotlight`, or all together with
   `bowl performance`
-- See the file ``Pinfile`` which is used by bowl.
+  - The `bowl` command uses groups from the `Pinfile`, which runs commands from the `Procfile`
 
 ## Routing from your local machine to your VM
 
-- Each backdrop app runs on its own local port ie 3038, 3039.
-- From inside the VM, you can access apps directly at ie `localhost:3038`
-- From outside the VM, you can use the `perfplat.dev` domain ie `www.perfplat.dev`
+Each app runs on its own local port ie 3038, 3039, 3057. From inside the VM you can access apps directly at `localhost:3038`. From outside the VM you can use `perfplat.dev` subdomains, ie `www.perfplat.dev` or `spotlight.perfplat.dev`.
