@@ -7,11 +7,12 @@ Performance Platform development environment
 - Clone this folder onto your local machine with `git clone git@github.com:alphagov/pp-development.git`. You can do this in your `govuk` folder or in a separate `performance-platform` folder.
 - Check / install dependencies with `GOVUK_DEPS=true ./install.sh` Warnings
   about the ``pp-deployment`` repository can be safely ignored.
-- If you don't have Vagrant installed, install it from (vagrantup.com)[http://www.vagrantup.com/]
--- You need to have vagrant version >= 1.3.0
+- If you don't have Vagrant installed, install it from [vagrantup.com](http://www.vagrantup.com/)
+  - You need to have vagrant version >= 1.3.0
+- You need `vagrant-dns`, it can be installed with `vagrant plugin install vagrant-dns`
 - Start the virtual machine with `vagrant up`
--- VMWare users may [hit an error](http://superuser.com/questions/511679/getting-an-error-trying-to-set-up-shared-folders-on-an-ubuntu-instance-of-vmware)
--- VirtualBox users should not ignore warnings about a mismatch between
+  - VMWare users may [hit an error](http://superuser.com/questions/511679/getting-an-error-trying-to-set-up-shared-folders-on-an-ubuntu-instance-of-vmware)
+  - VirtualBox users should not ignore warnings about a mismatch between
    the version of VirtualBox and the Guest Additions. One known symptom is the
    inability to create symlinks inside Shared Folders, ie ``/var/apps``.
 - `vagrant provision` will install some additional software
@@ -31,15 +32,5 @@ Performance Platform development environment
 ## Routing from your local machine to your VM
 
 - Each backdrop app runs on its own local port ie 3038, 3039.
-- From inside the VM, you can access apps directly at ie localhost:3038
-- From outside the VM, requests to port 80 are routed to the correct app based
-  on domain name, HTTP method and URL.
-- Note the IP of your VM as defined in ``Vagrantfile``. It's worth confirming
-  by running ``ifconfig`` inside the VM.
-- Add a hostname entry to your local machine's ``/etc/hosts`` file which maps
-  that IP to a domain name understood by the apps, eg:
-  ``10.0.0.100    admin.perfplat.dev``
-- Now you can access ie ``http://admin.perfplat.dev``
-- Note that the hostname you choose in the ``/etc/hosts`` file affects the
-  routing to the app: if you see "Bad Gateway" messages it's a clue that
-  your hostname could be wrong.
+- From inside the VM, you can access apps directly at ie `localhost:3038`
+- From outside the VM, you can use the `perfplat.dev` domain ie `www.perfplat.dev`
