@@ -7,7 +7,7 @@ A Performance Platform development environment that uses [alphagov/pp-puppet](ht
 - [Vagrant](http://www.vagrantup.com/) (we've tested with versions >= 1.3.0)
   - And the vagrant-dns plugin: `vagrant plugin install vagrant-dns`
 - Software to run the virtual machine
-  - We make heavy use of [VirtualBox](https://www.virtualbox.org/) and we know version 4.2.16 works
+  - We make heavy use of [VirtualBox](https://www.virtualbox.org/). The Guest Additions installed on the disk image we use are for 4.2.10, use this version if possible.
   - [VMware](http://www.vmware.com/uk/) should also work
 
 ## Basic setup
