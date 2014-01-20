@@ -66,9 +66,28 @@ install_modules() {
 do_puppet_run() {
   echo "--> Run Puppet" | pp
   cd /var/apps/pp-puppet
+
+  # Copy in dev hieradata
+  if [ -d ../pp-deployment ]; then
+    echo "--| use development secrets" | pp
+    cp ./hieradata/environment.yaml /tmp/environment.yaml.$$
+    cp ../pp-deployment/environments/dev/hieradata/* ./hieradata/
+
+    trap reset_hieradata EXIT
+  fi
+
+
   FACTER_machine_role=development ./bin/puppet apply --modulepath=modules:vendor/modules \
                      --hiera_config=../pp-development/hiera.yaml \
                      manifests/site.pp 2>&1 | pp
+}
+
+reset_hieradata() {
+  echo "--| reset development secrets" | pp
+  if [ -e /tmp/environment.yaml.$$ ]; then
+    mv /tmp/environment.yaml.$$ ../pp-puppet/hieradata/environment.yaml
+  fi
+  rm -f ../pp-puppet/hieradata/secrets.yaml
 }
 
 main() {
