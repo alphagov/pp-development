@@ -49,8 +49,10 @@ end
 end
 
 "#{Vagrant::VERSION}" >= "1.1.0" and Vagrant.configure("2") do |config|
-  config.dns.tld = "perfplat.dev"
-  config.dns.patterns = [/^.*perfplat.dev$/]
+  if Vagrant.has_plugin? "vagrant-dns"
+    config.dns.tld = "perfplat.dev"
+    config.dns.patterns = [/^.*perfplat.dev$/]
+  end
 
   hosts.each do |host|
     config.vm.define host[:name] do |c|
