@@ -69,9 +69,9 @@ do_puppet_run() {
 
   # Copy in dev hieradata
   if [ -d ../pp-deployment ]; then
-    echo "--| use development secrets" | pp
-    cp ./hieradata/environment.yaml /tmp/environment.yaml.$$
-    cp ../pp-deployment/environments/dev/hieradata/* ./hieradata/
+    echo "--| use development secrets from pp-deployment" | pp
+    cp /var/apps/pp-puppet/hieradata/environment.yaml /tmp/environment.yaml.$$
+    cp /var/apps/pp-deployment/environments/dev/hieradata/* /var/apps/pp-puppet/hieradata/
 
     trap reset_hieradata EXIT
   fi
