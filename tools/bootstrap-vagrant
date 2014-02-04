@@ -73,7 +73,7 @@ do_puppet_run() {
     cp /var/apps/pp-puppet/hieradata/environment.yaml /tmp/environment.yaml.$$
     cp /var/apps/pp-deployment/environments/dev/hieradata/* /var/apps/pp-puppet/hieradata/
 
-    trap reset_hieradata EXIT
+    trap reset_hieradata EXIT SIGINT SIGTERM
   fi
 
 
