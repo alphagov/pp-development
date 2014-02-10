@@ -85,7 +85,7 @@ end
 
       c.ssh.forward_agent = true
       c.vm.provision :shell, :path => "tools/bootstrap-vagrant"
-      c.vm.synced_folder "..", "/var/apps"
+      c.vm.synced_folder "..", "/var/apps", :nfs => true
     end
   end
 end
