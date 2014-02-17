@@ -84,10 +84,12 @@ while read repo; do
   fetch_repo "$repo" "$GITHUB_PUBLIC"
 done < "GH_REPOS"
 
-status "Reading list of private repositories from GHE_REPOS and fetching from GitHub Enterprise"
-while read repo; do
-  fetch_repo "$repo" "$GITHUB_ENT"
-done < "GHE_REPOS"
+if [ -n "$ENT_DEPS" ]; then
+    status "Reading list of private repositories from GHE_REPOS and fetching from GitHub Enterprise"
+    while read repo; do
+      fetch_repo "$repo" "$GITHUB_ENT"
+    done < "GHE_REPOS"
+fi
 
 if [ -n "$GOVUK_DEPS" ]; then
     status "Reading list of GOV.UK repositories from GOV_REPOS and fetching from GitHub"
