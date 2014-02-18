@@ -87,6 +87,17 @@ reset_hieradata() {
   rm -f ../pp-puppet/hieradata/secrets.yaml
 }
 
+setup_virtualenv() {
+  echo "--> setup virtualenv" | pp
+  if [ ! -e /home/vagrant/.bash_profile ]; then
+    cat > /home/vagrant/.bash_profile <<EOF
+WORKON_HOME=\$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
+EOF
+    chown vagrant:vagrant /home/vagrant/.bash_profile
+  fi
+}
+
 main() {
   quieten_sudo
   set_dns_server
@@ -96,6 +107,7 @@ main() {
   bundle_gems
   install_modules
   do_puppet_run
+  setup_virtualenv
 }
 
 main
