@@ -9,6 +9,7 @@ A Performance Platform development environment that uses [alphagov/pp-puppet](ht
 - Software to run the virtual machine
   - We make heavy use of [VirtualBox](https://www.virtualbox.org/). The Guest Additions installed on the disk image we use are for 4.2.10, use this version if possible.
   - [VMware](http://www.vmware.com/uk/) should also work
+  - For shared folders we use NFS to improve performance. Linux users may need to install the following packages: ``nfs-kernel-server nfs-common portmap``
 
 ## Basic setup
 
