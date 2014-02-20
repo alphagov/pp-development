@@ -1,6 +1,6 @@
 #!/bin/sh
 
-GITHUB_PUBLIC="git@github.com:alphagov"
+GITHUB_PUBLIC="https://github.com/alphagov"
 GITHUB_ENT="git@github.gds:gds"
 
 ##############################################################################
