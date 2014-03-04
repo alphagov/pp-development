@@ -36,4 +36,6 @@ A Performance Platform development environment that uses [alphagov/pp-puppet](ht
 
 ## Routing from your local machine to your VM
 
+This only works **if your platform is OSX**.
+
 Each app runs on its own local port ie 3038, 3039, 3057. From inside the VM you can access apps directly at `localhost:3038`. If you install [vagrant-dns](https://github.com/BerlinVagrant/vagrant-dns/), you can access the VM from the host through `perfplat.dev` subdomains, i.e `www.perfplat.dev` or `spotlight.perfplat.dev`.
