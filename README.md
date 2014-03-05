@@ -21,6 +21,7 @@ A Performance Platform development environment that uses [alphagov/pp-puppet](ht
   - VirtualBox users should not ignore warnings about a mismatch between
     the version of VirtualBox and the Guest Additions. One known symptom is the
     inability to create symlinks inside Shared Folders, ie ``/var/apps``
+  - [vagrant-dns occasionally has a problem](https://github.com/BerlinVagrant/vagrant-dns/issues/27#issuecomment-31514786), so may need [additional configuration](https://github.com/alphagov/gds-boxen/commit/a78bc9861f9fc303497d81d26ab652be41e646f5).
 - Starting the machine should also provision it using Puppet (resulting in lots of lines beginning `[bootstrap] Notice: /Stage[main]`), but if it doesn't you can safely reprovision at any time with `vagrant provision`
 - SSH on to the virtual machine with `vagrant ssh`
 - Install dependencies for each required app in `/var/apps` by following the
