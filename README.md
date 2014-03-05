@@ -23,6 +23,16 @@ A Performance Platform development environment that uses [alphagov/pp-puppet](ht
     inability to create symlinks inside Shared Folders, ie ``/var/apps``
   - [vagrant-dns occasionally has a problem](https://github.com/BerlinVagrant/vagrant-dns/issues/27#issuecomment-31514786), so may need [additional configuration](https://github.com/alphagov/gds-boxen/commit/a78bc9861f9fc303497d81d26ab652be41e646f5).
 - Starting the machine should also provision it using Puppet (resulting in lots of lines beginning `[bootstrap] Notice: /Stage[main]`), but if it doesn't you can safely reprovision at any time with `vagrant provision`
+- **NOTE**
+  Initial provisioning of the machine may fail with an error message of the form:
+  ```
+  Error: No such file or directory - /var/apps/pp-puppet/.tmp/librarian/cache/source/puppet/forge/3792e516e3ff92a0ef9f5e827f8e76eb/smarchive/archive/version/7663d0c47292d3c50eb71d008ed8a340/archive/spec/fixtures/modules/archive/files
+
+  Error: Try 'puppet help module install' for usage
+
+  /var/apps/pp-puppet/vendor/bundle/ruby/1.9.1/gems/librarian-puppet-0.9.13/lib/librarian/puppet/source/forge.rb:114:in `unlink': Directory not empty - /var/apps/pp-puppet/.tmp/librarian/cache/source/puppet/forge/3792e516e3ff92a0ef9f5e827f8e76eb/smarchive/archive/version/7663d0c47292d3c50eb71d008ed8a340 (Errno::ENOTEMPTY)
+  ```
+  If this happens, running `vagrant provision` again may fix it (issue [#36](https://github.com/alphagov/pp-development/issues/36)).
 - SSH on to the virtual machine with `vagrant ssh`
 - Install dependencies for each required app in `/var/apps` by following the
   instructions in their README files
