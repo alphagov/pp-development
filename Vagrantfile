@@ -6,6 +6,16 @@ hosts = [
   { name: 'pp-development-1',  ip: '10.0.0.100' },
 ]
 
+# Images are built for specific versions of virtualbox guest additions for now.
+# It has proven problematic to mix versions of virtualbox and guest additions
+# in the past and therefore they are pinned by what is available in this map.
+$boxesByVersion = {
+  "4.3.6r91406" => {
+    name: "pp-ubuntu-12.04-virtualbox-4.3.6r91406",
+    url: "https://s3-eu-west-1.amazonaws.com/gds-boxes/pp-ubuntu-12.04-virtualbox-4.3.6r91406.box",
+  },
+}
+
 def get_box(provider)
   provider    ||= "virtualbox"
   case provider
@@ -14,13 +24,13 @@ def get_box(provider)
     url   = "http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-svr-12042-x64-vf503-nocm.box"
   else
     virtualBoxVersion = `vboxmanage --version`.strip
-    if virtualBoxVersion == "4.3.6r91406"
-      name = "pp-ubuntu-12.04-virtualbox-4.3.6r91406"
-      url = "https://s3-eu-west-1.amazonaws.com/gds-boxes/pp-ubuntu-12.04-virtualbox-4.3.6r91406.box"
-    else
-      name  = "puppetlabs-ubuntu-server-12042-x64-vbox4210-nocm"
-      url   = "http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-server-12042-x64-vbox4210-nocm.box"
+    box = $boxesByVersion[virtualBoxVersion]
+    if box.nil?
+      $stderr.puts "Virtualbox version #{virtualBoxVersion} is not supported by pp-development. See README.md. Supported: #{$boxesByVersion.keys}"
+      exit 1
     end
+
+    name, url = box[:name], box[:url]
   end
   return name, url
 end
