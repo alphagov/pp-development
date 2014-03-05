@@ -4,10 +4,10 @@ A Performance Platform development environment that uses [alphagov/pp-puppet](ht
 
 ## Host machine prerequisites
 
-- [Vagrant](http://www.vagrantup.com/) (we've tested with versions >= 1.3.0)
+- [Vagrant](http://www.vagrantup.com/) (note that vagrant >=1.4 is required to use VirtualBox >=4.3)
   - And the vagrant-dns plugin: `vagrant plugin install vagrant-dns`
 - Software to run the virtual machine
-  - We make heavy use of [VirtualBox](https://www.virtualbox.org/). The Guest Additions installed on the disk image we use are for 4.2.10, use this version if possible.
+  - An exact version of [VirtualBox](https://www.virtualbox.org/) for which there exists a [machine image in `$boxesByVersion` in the Vagrantfile](./Vagrantfile). At time of writing this means **4.3.6r91406** but more versions may be added in the future. Mixing versions of virtualbox and additions is unsupported.
   - [VMware](http://www.vmware.com/uk/) should also work
   - For shared folders we use NFS to improve performance. Linux users may need to install the following packages: ``nfs-kernel-server nfs-common portmap``
 
