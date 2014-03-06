@@ -50,9 +50,26 @@ end
       c.vm.provision :shell, :path => "tools/bootstrap-vagrant"
       c.vm.share_folder "apps", "/var/apps", ".."
       c.vm.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/apps", "1"]
+
+      c = load_local_vagrant_file(host[:name], c)
     end
   end
 end
+
+def load_local_vagrant_file(name, config)
+  # Load local overrides
+  if File.exist? "#{name}-Vagrantfile.local"
+    $stderr.puts "WARNING: Vagrantfile.local is deprecated! Please use Vagrantfile.localconfig instead."
+    $stderr.puts ""
+  end
+
+  if File.exist? "#{name}-Vagrantfile.localconfig"
+    instance_eval File.read("#{name}-Vagrantfile.localconfig"), "#{name}-Vagrantfile.localconfig"
+  end
+
+  config
+end
+
 
 "#{Vagrant::VERSION}" >= "1.1.0" and Vagrant.configure("2") do |config|
   if Vagrant.has_plugin? "vagrant-dns"
@@ -99,6 +116,8 @@ end
       c.vm.provider :vmware_fusion do |f, override|
         override.vm.synced_folder "..", "/var/apps"
       end
+
+      c = load_local_vagrant_file(host[:name], c)
     end
   end
 end
