@@ -9,7 +9,7 @@ A Performance Platform development environment that uses [alphagov/pp-puppet](ht
 - Software to run the virtual machine
   - An exact version of [VirtualBox](https://www.virtualbox.org/) for which there exists a [machine image in `$boxesByVersion` in the Vagrantfile](./Vagrantfile). At time of writing this means **4.3.6r91406** but more versions may be added in the future. Mixing versions of virtualbox and additions is unsupported.
   - [VMware](http://www.vmware.com/uk/) should also work
-  - To improve performance users of OSX can set the nfs flag to true [in the Vagrandfile](https://github.com/alphagov/pp-development/blob/master/Vagrantfile#L124). Linux (nfs seems to be more buggy) users may need to install the following packages: ``nfs-kernel-server nfs-common portmap``
+  - To improve performance, users of OSX can set the nfs flag to true [in the Vagrandfile](https://github.com/alphagov/pp-development/blob/master/Vagrantfile#L124). Linux (nfs seems to be more buggy) users may need to install the following packages: ``nfs-kernel-server nfs-common portmap``
 
 ## Basic setup
 
