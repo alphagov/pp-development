@@ -121,7 +121,7 @@ end
       c.vm.provision :shell, :path => "tools/bootstrap-vagrant"
 
       c.vm.provider :virtualbox do |vb, override|
-        override.vm.synced_folder "..", "/var/apps", :nfs => true
+        override.vm.synced_folder "..", "/var/apps", :nfs => false
       end
 
       c.vm.provider :vmware_fusion do |f, override|
