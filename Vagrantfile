@@ -13,6 +13,7 @@ $boxesByVersion = {
   "4.3.6r91406" => {
     name: "pp-ubuntu-12.04-virtualbox-4.3.6r91406",
     url: "https://s3-eu-west-1.amazonaws.com/gds-boxes/pp-ubuntu-12.04-virtualbox-4.3.6r91406.box",
+    link: "http://download.virtualbox.org/virtualbox/4.3.6/VirtualBox-4.3.6-91406-OSX.dmg",
   },
 }
 
@@ -26,7 +27,7 @@ def get_box(provider)
     virtualBoxVersion = `vboxmanage --version`.strip
     box = $boxesByVersion[virtualBoxVersion]
     if box.nil?
-      $stderr.puts "Virtualbox version #{virtualBoxVersion} is not supported by pp-development. See README.md. Supported: #{$boxesByVersion.keys}"
+      $stderr.puts "Virtualbox version #{virtualBoxVersion} is not supported by pp-development. See README.md.\nSupported: #{$boxesByVersion.keys} --> #{$boxesByVersion.values.map {|item| item[:link]}}"
       exit 1
     end
 
