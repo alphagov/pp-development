@@ -34,6 +34,8 @@ A Performance Platform development environment that uses [alphagov/pp-puppet](ht
   /var/apps/pp-puppet/vendor/bundle/ruby/1.9.1/gems/librarian-puppet-0.9.13/lib/librarian/puppet/source/forge.rb:114:in `unlink': Directory not empty - /var/apps/pp-puppet/.tmp/librarian/cache/source/puppet/forge/3792e516e3ff92a0ef9f5e827f8e76eb/smarchive/archive/version/7663d0c47292d3c50eb71d008ed8a340 (Errno::ENOTEMPTY)
   ```
   If this happens, running `vagrant provision` again may fix it (issue [#36](https://github.com/alphagov/pp-development/issues/36)).
+- When provisioning has completed successfully you should see the line:
+  `[bootstrap] pp-development/tools/bootstrap-vagrant exit success`
 - SSH on to the virtual machine with `vagrant ssh`
 - Install dependencies for each required app in `/var/apps` by following the
   instructions in their README files

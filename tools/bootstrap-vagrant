@@ -10,6 +10,13 @@ pp() {
   done
 }
 
+print_green() {
+  local green="\033[32m"
+  local blue="\033[34m"
+  local reset="\033[0m"
+  echo -e "${blue}[bootstrap]${green} $@${reset}"
+}
+
 quieten_sudo() {
   echo "--> Set root profile to quieten sudo tty message" | pp
   echo '[[ $(test -t 0) ]] && mesg n' > /root/.profile
@@ -108,6 +115,7 @@ main() {
   install_modules
   do_puppet_run
   setup_virtualenv
+  print_green "pp-development/tools/bootstrap-vagrant exit success"
 }
 
 main
