@@ -18,7 +18,10 @@ def create_box_details(virtualboxVersion)
   }
 end
 
-$boxVersions = ["4.3.6r91406"]
+$boxVersions = [
+  "4.3.6r91406",
+  "4.3.8r92456",
+]
 
 # Create a hash of virtualbox version to box details hash
 $boxesByVersion = Hash[$boxVersions.map {|virtualboxVersion|
