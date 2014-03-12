@@ -9,13 +9,21 @@ hosts = [
 # Images are built for specific versions of virtualbox guest additions for now.
 # It has proven problematic to mix versions of virtualbox and guest additions
 # in the past and therefore they are pinned by what is available in this map.
-$boxesByVersion = {
-  "4.3.6r91406" => {
-    name: "pp-ubuntu-12.04-virtualbox-4.3.6r91406",
-    url: "https://s3-eu-west-1.amazonaws.com/gds-boxes/pp-ubuntu-12.04-virtualbox-4.3.6r91406.box",
-    link: "http://download.virtualbox.org/virtualbox/4.3.6/",
-  },
-}
+def create_box_details(virtualboxVersion)
+  boxName = "pp-ubuntu-12.04-virtualbox-#{virtualboxVersion}"
+  {
+    name: boxName,
+    url: "https://s3-eu-west-1.amazonaws.com/gds-boxes/#{boxName}.box",
+    link: "https://download.virtualbox.org/virtualbox/#{virtualboxVersion.split('r').first}"
+  }
+end
+
+$boxVersions = ["4.3.6r91406"]
+
+# Create a hash of virtualbox version to box details hash
+$boxesByVersion = Hash[$boxVersions.map {|virtualboxVersion|
+  [virtualboxVersion, create_box_details(virtualboxVersion)]
+}]
 
 def get_box(provider)
   provider    ||= "virtualbox"
