@@ -57,6 +57,8 @@ bundle_gems() {
   echo "--> Bundle gems" | pp
   cd /var/apps/pp-puppet
   bundle --path vendor/bundle \
+         --standalone \
+         --binstubs \
          --without NONEXISTENT \
          --quiet 2>&1 | pp
 }
@@ -81,7 +83,7 @@ do_puppet_run() {
   fi
 
 
-  FACTER_machine_role=development bundle exec puppet apply --modulepath=modules:vendor/modules \
+  FACTER_machine_role=development ./bin/puppet apply --modulepath=modules:vendor/modules \
                      --hiera_config=../pp-development/hiera.yaml \
                      manifests/site.pp 2>&1 | pp
 }
