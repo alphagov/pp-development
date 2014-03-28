@@ -1,6 +1,7 @@
 backdrop
 backdrop-asset-request-collector
 backdrop-collector
+backdrop-collector-plugins
 backdrop-ga-collector
 backdrop-ga-realtime-collector
 backdrop-pingdom-collector
