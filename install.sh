@@ -55,6 +55,8 @@ fetch_repo () {
     done
     if [ $attempts -eq 4 ]; then
       warn "Failed $1 - clone failed, skipping"
+    else
+      ok "Cloned $1"
     fi
   fi
 }
