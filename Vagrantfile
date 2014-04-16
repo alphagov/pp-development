@@ -1,6 +1,13 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+# Warning about VM moving to pp-puppet
+string_red = "\e[31m"
+string_reset = "\e[0m"
+puts string_red + "[WARNING] The Performance Platform virtual machine is now available in pp-puppet" + string_reset
+puts string_red + "[WARNING] The VM that you are using is deprecated and will be removed in future" + string_reset
+puts "\n"
+
 # Node definitions
 hosts = [
   { name: 'pp-development-1',  ip: '10.0.0.100' },
