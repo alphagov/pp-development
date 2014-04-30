@@ -2,6 +2,10 @@
 
 A Performance Platform development environment that uses [alphagov/pp-puppet](https://github.com/alphagov/pp-puppet) to provision you a virtual machine.
 
+## DEPRECATED: Moving to pp-puppet
+
+All the scripts and setup tools in this repo are being moved to [pp-puppet](https://github.com/alphagov/pp-puppet). This repository should no longer be used.
+
 ## Host machine prerequisites
 
 - [Vagrant](http://www.vagrantup.com/) (note that vagrant >=1.4 is required to use VirtualBox >=4.3)
