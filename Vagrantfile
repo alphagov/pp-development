@@ -4,9 +4,11 @@
 # Warning about VM moving to pp-puppet
 string_red = "\e[31m"
 string_reset = "\e[0m"
-puts string_red + "[WARNING] The Performance Platform virtual machine is now available in pp-puppet" + string_reset
-puts string_red + "[WARNING] The VM that you are using is deprecated and will be removed in future" + string_reset
+puts string_red + "[ERROR] The Performance Platform virtual machine is now available in pp-puppet" + string_reset
+puts string_red + "[ERROR] The VM that you are using is no longer functional" + string_reset
 puts "\n"
+
+exit 1
 
 # Node definitions
 hosts = [
