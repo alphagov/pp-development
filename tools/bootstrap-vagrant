@@ -45,12 +45,22 @@ check_ruby() {
     apt-get install -qq ruby1.9.1 ruby1.9.1-dev 2>&1 | pp
 }
 
-check_bundler() {
-  echo "--> Check for Bundler" | pp
+configure_gems() {
   echo 'gem: --quiet --no-rdoc --no-ri' > /root/.gemrc
-  # FIXME: bundler search -i doesn't say if something isn't installed
-  local out=$(gem list bundler | grep bundler)
-  [[ -n $out ]] || gem install bundler 2>&1 | pp
+}
+
+install_gem() {
+  echo "--> Check for $1" | pp
+  local out=$(gem list $1 | grep $1)
+  [[ -n $out ]] || gem install $1 2>&1 | pp
+}
+
+check_bundler() {
+  install_gem 'bundler'
+}
+
+check_bowler() {
+  install_gem 'bowler'
 }
 
 bundle_gems() {
@@ -112,7 +122,9 @@ main() {
   set_dns_server
   set_uk_apt_sources
   check_ruby
+  configure_gems
   check_bundler
+  check_bowler
   bundle_gems
   install_modules
   do_puppet_run
